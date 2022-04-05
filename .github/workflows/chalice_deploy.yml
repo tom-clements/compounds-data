@@ -1,0 +1,38 @@
+name: deploy-aws
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy-aws:
+    name: deploy-aws
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest black flake8 pytest-mypy
+        pip install -r api/requirements.txt
+    - name: Lint with black
+      run: |
+        black --check -l 120 .
+    - name: Test with pytest
+      run: |
+        pytest --mypy api/tests
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+    - name: chalice deploy
+      run: |
+        cd api && chalice deploy --stage v1

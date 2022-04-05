@@ -1,0 +1,258 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Compounds API"
+    },
+    "paths": {
+        "/compound": {
+            "get": {
+                "description": "Returns IDs of all compounds",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "schema": {
+                            "$ref": "#/definitions/CompoundList"
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "uri": "arn:{partition}:apigateway:{region_name}:lambda:path/2015-03-31/functions/{api_handler_lambda_arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                }
+            }
+        },
+        "/compound/{compound_id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "schema": {
+                            "$ref": "#/definitions/Compound"
+                        }
+                    },
+                    "404": {
+                        "description": "Compound Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "uri": "arn:{partition}:apigateway:{region_name}:lambda:path/2015-03-31/functions/{api_handler_lambda_arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                },
+                "parameters": [
+                    {
+                        "name": "compound_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID of compound to retrieve data of"
+                    }
+                ],
+                "description": "Returns a single compound"
+            }
+        },
+        "/compound/{compound_id}/image.png": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "image/png"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "404": {
+                        "description": "Compound Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "uri": "arn:{partition}:apigateway:{region_name}:lambda:path/2015-03-31/functions/{api_handler_lambda_arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                },
+                "parameters": [
+                    {
+                        "name": "compound_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID of compound to retrieve data of"
+                    }
+                ],
+                "description": "Returns a png image of a single compound"
+            }
+        },
+        "/compound/{compound_id}/image.html": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "text/html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 response"
+                    },
+                    "404": {
+                        "description": "Compound Not Found"
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "responses": {
+                        "default": {
+                            "statusCode": "200"
+                        }
+                    },
+                    "uri": "arn:{partition}:apigateway:{region_name}:lambda:path/2015-03-31/functions/{api_handler_lambda_arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "contentHandling": "CONVERT_TO_TEXT",
+                    "type": "aws_proxy"
+                },
+                "parameters": [
+                    {
+                        "name": "compound_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "ID of compound to retrieve data of"
+                    }
+                ],
+                "description": "Returns a html page with a picture of a single compound"
+            }
+        }
+    },
+    "definitions": {
+        "CompoundList": {
+            "type": "array",
+            "title": "CompoundList",
+            "items": {
+                "type": "Compound",
+                "example": "{\n\"compound_id\": 694811,\n\"smiles\": \"CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14\",\n\"molecular_weight\": 423.89538,\n\"ALogP\": 3.288,\n\"molecular_formula\": \"C22H22ClN5O2\",\n\"num_rings\": 4,\n\"image\": \"images/694811.png\",\n\"assay_results\": [\n{\n\"result_id\": 8046403,\n\"target\": \"Bromodomain-containing protein 4\",\n\"result\": \"IC50\",\n\"operator\": \"=\",\n\"value\": 36.1,\n\"unit\": \"nM\"\n}]}"
+            }
+        },
+        "Compound": {
+            "type": "object",
+            "title": "Compound",
+            "properties": {
+                "compound_id": {
+                    "type": "integer",
+                    "example": 694811
+                },
+                "smiles": {
+                    "type": "string",
+                    "example": "CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14"
+                },
+                "molecular_weight": {
+                    "type": "float",
+                    "example": 423.89538
+                },
+                "ALogP": {
+                    "type": "float",
+                    "example": "3.288"
+                },
+                "molecular_formula": {
+                    "type": "string",
+                    "example": "C22H22ClN5O2"
+                },
+                "num_rings": {
+                    "type": "integer",
+                    "example": 4
+                },
+                "image": {
+                    "type": "string",
+                    "example": "images/694811.png"
+                },
+                "assay_results": {
+                    "type": "array",
+                    "example": "[{\n\"result_id\": 8046403,\n\"target\": \"Bromodomain-containing protein 4\",\n\"result\": \"IC50\",\n\"operator\": \"=\",\n\"value\": 36.1,\n\"unit\": \"nM\"\n}]",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "result_id": {
+                                "type": "integer",
+                                "example": "8046403"
+                            },
+                            "target": {
+                                "type": "string",
+                                "example": "Bromodomain-containing protein 4"
+                            },
+                            "result": {
+                                "type": "string",
+                                "example": "IC50"
+                            },
+                            "operator": {
+                                "type": "string",
+                                "example": "="
+                            },
+                            "value": {
+                                "type": "float",
+                                "example": 36.1
+                            },
+                            "unit": {
+                                "type": "string",
+                                "example": "nM"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "x-amazon-apigateway-binary-media-types": [
+        "application/octet-stream",
+        "application/x-tar",
+        "application/zip",
+        "audio/basic",
+        "audio/ogg",
+        "audio/mp4",
+        "audio/mpeg",
+        "audio/wav",
+        "audio/webm",
+        "image/png",
+        "image/jpg",
+        "image/jpeg",
+        "image/gif",
+        "video/ogg",
+        "video/mpeg",
+        "video/webm"
+    ]
+}

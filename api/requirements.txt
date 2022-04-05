@@ -1,0 +1,2 @@
+chalice==1.26.6
+jinja2==3.1.0 # latest version supported by AWS
