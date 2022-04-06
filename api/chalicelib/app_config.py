@@ -16,7 +16,7 @@ def set_log_level(app):
 
 
 def setup_app() -> Chalice:
-    chalice_app = Chalice(app_name="compounds-data", debug=True)
+    chalice_app = Chalice(app_name="compounds-data", debug=False)
     set_log_level(chalice_app)
     register_blueprints(chalice_app)
     return chalice_app

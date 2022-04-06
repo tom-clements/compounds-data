@@ -114,3 +114,13 @@ chalice deploy --stage v1
 ### Endpoint
 
 Endpoint is configured to: https://g2nabpqw52.execute-api.eu-west-2.amazonaws.com/v1/
+
+## Data ETL
+
+The data was loaded into an Amazon DynamoDB table.
+Run the ETL process using:
+
+```sh
+cd etl
+python run_pipeline --table-name "compounds"
+```

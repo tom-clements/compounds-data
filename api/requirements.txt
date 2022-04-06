@@ -1,2 +1,4 @@
 chalice==1.26.6
 jinja2==3.1.0 # latest version supported by AWS
+boto3==1.21.34
+boto3-stubs==1.21.34

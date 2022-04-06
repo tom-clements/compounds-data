@@ -1,9 +1,9 @@
 from typing import Optional
 
-from chalicelib.data.documents.json_extractor import CompoundJSONExtractor
 from chalicelib.models.compound import Compound
+from chalicelib.services.document_extractor import get_document_extractor
 
 
 def get_compound_from_id(compound_id: int) -> Optional[Compound]:
-    extractor = CompoundJSONExtractor()
+    extractor = get_document_extractor()
     return extractor.read_compound_from_id(compound_id)

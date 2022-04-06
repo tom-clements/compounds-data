@@ -1,13 +1,13 @@
 from typing import Optional
 
-from chalicelib.data.images.image_extractor import CompoundImageExtractor
+from chalicelib.services.image_extractor import get_image_extractor
 
 
 def get_compound_image_from_id(compound_id: int) -> Optional[bytes]:
-    extractor = CompoundImageExtractor()
+    extractor = get_image_extractor()
     return extractor.read_compound_image_from_id(compound_id)
 
 
 def get_compound_image_html_from_id(compound_id: int) -> Optional[str]:
-    extractor = CompoundImageExtractor()
+    extractor = get_image_extractor()
     return extractor.read_compound_html_from_id(compound_id)

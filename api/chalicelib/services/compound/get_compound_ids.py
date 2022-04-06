@@ -1,8 +1,8 @@
 from typing import List
 
-from chalicelib.data.documents.json_extractor import CompoundJSONExtractor
+from chalicelib.services.document_extractor import get_document_extractor
 
 
 def get_compound_ids() -> List[int]:
-    extractor = CompoundJSONExtractor()
+    extractor = get_document_extractor()
     return extractor.read_compound_ids()

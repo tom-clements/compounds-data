@@ -5,15 +5,19 @@
     "v1": {
       "api_gateway_stage": "v1",
       "environment_variables": {
+          "ENVIRONMENT": "prod",
           "API_STAGE": "v1",
           "API_SCHEME": "https",
           "API_URL": "g2nabpqw52.execute-api.eu-west-2.amazonaws.com"
 
-      }
+      },
+      "manage_iam_role": false,
+      "iam_role_arn": "arn:aws:iam::303078101535:role/compounds-lambda-dynamodb"
     },
     "local": {
       "api_gateway_stage": "local",
       "environment_variables": {
+          "ENVIRONMENT": "local",
           "API_STAGE": "",
           "API_SCHEME": "http",
           "API_URL": "localhost:8000"

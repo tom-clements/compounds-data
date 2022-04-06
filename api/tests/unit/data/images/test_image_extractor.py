@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from jinja2 import Template
 
-from chalicelib.data.images.image_extractor import CompoundImageExtractor
+from chalicelib.data.images.local_image_extractor import CompoundLocalImageExtractor
 
 
 class TestCompoundImageExtractor:
@@ -23,10 +23,10 @@ class TestCompoundImageExtractor:
         else:
             return None
 
-    @patch.object(CompoundImageExtractor, "_get_template", _mock_get_template)
-    @patch.object(CompoundImageExtractor, "read_compound_image_from_id", mock_read_compound_image_from_id)
+    @patch.object(CompoundLocalImageExtractor, "_get_template", _mock_get_template)
+    @patch.object(CompoundLocalImageExtractor, "read_compound_image_from_id", mock_read_compound_image_from_id)
     def test_read_compound_html_from_id(self):
-        extractor = CompoundImageExtractor()
+        extractor = CompoundLocalImageExtractor()
         expected = "1 dGVzdGltYWdlYnl0ZXM="
         actual = extractor.read_compound_html_from_id(1)
         assert actual == expected

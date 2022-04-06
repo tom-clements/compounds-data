@@ -1,3 +1,4 @@
+from typing import List, Dict
 from unittest.mock import patch
 
 from chalicelib.data.documents.json_extractor import CompoundJSONExtractor
@@ -5,7 +6,7 @@ from chalicelib.data.documents.json_extractor import CompoundJSONExtractor
 
 class TestCompoundJSONExtractor:
     @staticmethod
-    def mock_read_compounds():
+    def mock_read_compounds() -> List[Dict[str, int]]:
         return [{"compound_id": 1}]
 
     @patch.object(CompoundJSONExtractor, "read_compounds", mock_read_compounds)

@@ -3,12 +3,10 @@ from pathlib import Path
 from typing import Optional
 
 from jinja2 import Template
-from chalicelib.data.base.base_extractor import Extractor
+from chalicelib.data.base.base_image_extractor import ImageExtractor
 
 
-class CompoundImageExtractor(Extractor):
-
-    # TODO host images in a cloud bucket
+class CompoundLocalImageExtractor(ImageExtractor):
     def __init__(self, file_path: str = "chalicelib/db/images"):
         self.file_path = file_path
 
