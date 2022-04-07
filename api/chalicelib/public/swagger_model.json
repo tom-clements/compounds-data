@@ -169,10 +169,10 @@
     "definitions": {
         "CompoundList": {
             "type": "array",
-            "title": "CompoundList",
+            "title": "CompoundIDList",
             "items": {
-                "type": "Compound",
-                "example": "{\n\"compound_id\": 694811,\n\"smiles\": \"CCNC(=O)C[C@@H]1N=C(c2ccc(Cl)cc2)c3cc(OC)ccc3n4c(C)nnc14\",\n\"molecular_weight\": 423.89538,\n\"ALogP\": 3.288,\n\"molecular_formula\": \"C22H22ClN5O2\",\n\"num_rings\": 4,\n\"image\": \"images/694811.png\",\n\"assay_results\": [\n{\n\"result_id\": 8046403,\n\"target\": \"Bromodomain-containing protein 4\",\n\"result\": \"IC50\",\n\"operator\": \"=\",\n\"value\": 36.1,\n\"unit\": \"nM\"\n}]}"
+                "type": "integer",
+                "example": [694811, 1442546]
             }
         },
         "Compound": {
