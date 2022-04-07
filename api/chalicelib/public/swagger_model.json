@@ -53,6 +53,9 @@
                     },
                     "404": {
                         "description": "Compound Not Found"
+                    },
+                    "400": {
+                        "description": "Integer Input Required"
                     }
                 },
                 "x-amazon-apigateway-integration": {
@@ -93,6 +96,9 @@
                     },
                     "404": {
                         "description": "Compound Not Found"
+                    },
+                    "400": {
+                        "description": "Integer Input Required"
                     }
                 },
                 "x-amazon-apigateway-integration": {
@@ -133,6 +139,9 @@
                     },
                     "404": {
                         "description": "Compound Not Found"
+                    },
+                    "400": {
+                        "description": "Integer Input Required"
                     }
                 },
                 "x-amazon-apigateway-integration": {

@@ -7,6 +7,7 @@ from chalicelib.services.compound.get_compound_image_from_id import (
     get_compound_image_from_id,
     get_compound_image_html_from_id,
 )
+from chalicelib.services.utils import verify_integer_input
 
 compound_routes = Blueprint(__name__)
 
@@ -17,6 +18,7 @@ def compound_get() -> Response:
 
 
 @compound_routes.route("/compound/{compound_id}", methods=["GET"], cors=get_cors_config())
+@verify_integer_input
 def compound_from_id_get(compound_id: str) -> Response:
     compound = get_compound_from_id(int(compound_id))
     if compound:
@@ -26,6 +28,7 @@ def compound_from_id_get(compound_id: str) -> Response:
 
 
 @compound_routes.route("/compound/{compound_id}/image.png", methods=["GET"], cors=get_cors_config())
+@verify_integer_input
 def compound_image_from_id_get(compound_id: str) -> Response:
     image = get_compound_image_from_id(int(compound_id))
     if image:
@@ -35,6 +38,7 @@ def compound_image_from_id_get(compound_id: str) -> Response:
 
 
 @compound_routes.route("/compound/{compound_id}/image.html", methods=["GET"], cors=get_cors_config())
+@verify_integer_input
 def compound_image_html_from_id_get(compound_id: str) -> Response:
     html = get_compound_image_html_from_id(int(compound_id))
     if html:
