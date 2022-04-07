@@ -137,9 +137,6 @@
                     "200": {
                         "description": "200 response"
                     },
-                    "404": {
-                        "description": "Compound Not Found"
-                    },
                     "400": {
                         "description": "Integer Input Required"
                     }

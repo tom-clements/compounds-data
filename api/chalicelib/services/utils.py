@@ -10,4 +10,5 @@ def verify_integer_input(f):
             return f(*args, **kwargs)
         else:
             raise BadRequestError("Integer Input Required")
+
     return decorated

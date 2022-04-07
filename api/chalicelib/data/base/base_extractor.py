@@ -1,5 +1,5 @@
 from abc import ABC
 
 
-class Extractor(ABC):
+class CompoundExtractor(ABC):
     pass

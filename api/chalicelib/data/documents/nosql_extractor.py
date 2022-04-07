@@ -2,11 +2,11 @@ from typing import List, Optional
 
 import boto3
 
-from chalicelib.data.base.base_document_extractor import DocumentExtractor
+from chalicelib.data.base.base_document_extractor import CompoundDocumentExtractor
 from chalicelib.models.compound import Compound
 
 
-class CompoundNoSQLExtractor(DocumentExtractor):
+class CompoundNoSQLExtractor(CompoundDocumentExtractor):
     def __init__(self, table_name: str = "compounds"):
         self.table_name = table_name
 

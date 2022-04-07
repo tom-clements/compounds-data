@@ -1,11 +1,13 @@
 import json
 from typing import List, Optional
 
-from chalicelib.data.base.base_document_extractor import DocumentExtractor
+from chalicelib.data.base.base_document_extractor import CompoundDocumentExtractor
 from chalicelib.models.compound import Compound
 
 
-class CompoundJSONExtractor(DocumentExtractor):
+class CompoundJSONExtractor(CompoundDocumentExtractor):
+    """ """
+
     def __init__(self, file_path: str = "chalicelib/db/compounds.json"):
         self.file_path = file_path
 

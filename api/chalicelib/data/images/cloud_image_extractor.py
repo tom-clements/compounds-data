@@ -1,10 +1,10 @@
 from typing import Optional
 
-from chalicelib.data.base.base_image_extractor import ImageExtractor
+from chalicelib.data.base.base_image_extractor import CompoundImageExtractor
 
 
 # TODO: upload images into cloud bucket
-class CompoundCloudImageExtractor(ImageExtractor):
+class CompoundCloudImageExtractor(CompoundImageExtractor):
     def read_compound_html_from_id(self, compound_id: int) -> str:
         raise NotImplementedError
 

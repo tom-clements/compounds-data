@@ -3,10 +3,10 @@ from pathlib import Path
 from typing import Optional
 
 from jinja2 import Template
-from chalicelib.data.base.base_image_extractor import ImageExtractor
+from chalicelib.data.base.base_image_extractor import CompoundImageExtractor
 
 
-class CompoundLocalImageExtractor(ImageExtractor):
+class CompoundLocalImageExtractor(CompoundImageExtractor):
     def __init__(self, file_path: str = "chalicelib/db/images"):
         self.file_path = file_path
 
